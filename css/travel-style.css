@@ -1,0 +1,52 @@
+/* Travel Page Specific Styles */
+
+.travel-page {
+    background-color: var(--light-green);
+    padding: 100px 0;
+    min-height: 90vh;
+}
+
+#map {
+    height: 600px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border: 8px solid white;
+    z-index: 1; /* Ensures nav stays on top */
+}
+
+.map-overlay {
+    margin-top: -30px;
+    position: relative;
+    z-index: 10;
+    background: white;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* Custom Leaflet Popup Styling */
+.leaflet-popup-content-wrapper {
+    background: var(--primary) !important;
+    color: white !important;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+.leaflet-popup-tip {
+    background: var(--primary) !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    color: white !important;
+    padding: 8px 8px 0 0 !important;
+}
+
+/* Custom Marker Pulse Effect (Optional Aesthetic) */
+.custom-div-icon {
+    background: none;
+    border: none;
+}

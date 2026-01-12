@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography | R@M3$H.N</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <style>
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+            padding: 40px 0;
+        }
+        .photo-card {
+            overflow: hidden;
+            border-radius: 15px;
+            background: var(--light-green);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+        .photo-card:hover {
+            transform: translateY(-5px);
+        }
+        .photo-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        .photo-info {
+            padding: 15px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+
+    <section class="gallery-section">
+        <div class="container">
+            <h1 class="section-title">Photography</h1>
+            <p class="hero-description" style="text-align: center; margin: 0 auto 30px auto;">
+                Capturing moments through the lens—from the rugged peaks of National Parks to the architecture of global cities.
+            </p>
+
+            <div class="gallery-grid">
+                <div class="photo-card">
+                    <img src="src/pics/photos/death_valley.jpg" alt="Grand Canyon">
+                    <div class="photo-info">Death Valley</div>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ramesh Nagaraj.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

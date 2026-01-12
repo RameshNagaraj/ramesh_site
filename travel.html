@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel | R@M3$H.N</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 8px solid white;
+            z-index: 1;
+        }
+        .travel-container { padding-top: 40px; }
+        .map-overlay {
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+            background: white;
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            font-weight: 700;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div id="nav-placeholder"></div>
+        <script src="js/main.js"></script>
+    </nav>
+
+    <section class="travel-page">
+        <div class="container text-center">
+            <h1 class="section-title">National Park Expeditions</h1>
+            <p class="hero-description" style="margin: 0 auto 40px auto;">
+                Exploring the vast landscapes of the US National Parks. Each marker represents a journey through nature's most iconic wonders.
+            </p>
+            
+            <div id="map"></div>
+            <div class="map-overlay">9 Parks Explored</div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map focused on Western US
+        const map = L.map('map').setView([37.0902, -115.7129], 5);
+
+        // OpenStreetMap Layer with a subtle "Terrain" style
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Custom Green Icon for Markers
+        const parkIcon = L.divIcon({
+            className: 'custom-div-icon',
+            html: "<div style='background-color:#2d5a3d; width:12px; height:12px; border-radius:50%; border:2px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.3);'></div>",
+            iconSize: [12, 12],
+            iconAnchor: [6, 6]
+        });
+
+        // National Park Data
+        const parks = [
+            { name: "Yosemite", coords: [37.8651, -119.5383] },
+            { name: "Zion", coords: [37.2982, -113.0263] },
+            { name: "Bryce Canyon", coords: [37.5930, -112.1871] },
+            { name: "Death Valley", coords: [36.5054, -117.0794] },
+            { name: "Crater Lake", coords: [42.8684, -122.1685] },
+            { name: "Redwood", coords: [41.2132, -124.0046] },
+            { name: "Mojave Preserve", coords: [35.1400, -115.4700] },
+            { name: "Grand Canyon", coords: [36.0544, -112.1401] },
+            { name: "Channel Islands", coords: [34.0069, -119.7785] }
+        ];
+
+        // Add Markers to Map
+        parks.forEach(park => {
+            L.marker(park.coords, { icon: parkIcon })
+                .addTo(map)
+                .bindPopup(`<b>${park.name} National Park</b>`);
+        });
+    </script>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ramesh Nagaraj. Traveler & Photographer.</p>
+        </div>
+    </footer>
+</body>
+</html>
