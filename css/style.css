@@ -30,7 +30,7 @@ body {
     scroll-behavior: smooth;
 }
 
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; width: 100%; }
 
 /* Nav */
 nav {
@@ -55,7 +55,7 @@ nav a:hover { color: var(--primary); }
 .hero-flex { display: flex; align-items: center; justify-content: space-between; gap: 50px; }
 .hero-text h1 { font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; }
 .hero-text h2 { font-size: 1.5rem; color: #666; font-weight: 400; margin-bottom: 25px; }
-.hero-image img { width: 350px; height: 350px; border-radius: 30px; object-fit: cover; border: 10px solid var(--white); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+.hero-image img { width: 350px; height: 350px; max-width: 100%; border-radius: 30px; object-fit: cover; border: 10px solid var(--white); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
 
 [data-theme="dark"] .hero-text h2 { color: var(--text); }
 [data-theme="dark"] .hero-image img { border: 1px solid var(--border); box-shadow: none; filter: grayscale(20%); }
@@ -88,10 +88,33 @@ footer { background: var(--primary); color: white; padding: 80px 0 40px; text-al
 .contact-info a { color: white; text-decoration: underline; font-weight: 600; }
 .copyright { margin-top: 50px; font-size: 0.8rem; opacity: 0.6; }
 
-@media (max-width: 768px) {
-    .hero-flex { flex-direction: column-reverse; text-align: center; }
+@media (max-width: 900px) {
+    /* Tablet & Mobile Layout */
+    .nav-container { flex-direction: column; gap: 20px; align-items: center; }
+    nav ul { gap: 20px; flex-wrap: wrap; justify-content: center; }
+
+    .hero { padding: 60px 0; }
+    .hero-flex { flex-direction: column-reverse; text-align: center; gap: 40px; }
+    .hero-text h1 { font-size: 3rem; }
+    .hero-image img { width: 300px; height: 300px; margin: 0 auto; }
+    
+    .section-title { font-size: 2rem; }
+    .timeline-header { flex-direction: column; gap: 5px; }
+}
+
+@media (max-width: 600px) {
+    /* Mobile Specific */
     .hero-text h1 { font-size: 2.5rem; }
-    .timeline-header { flex-direction: column; }
+    .hero-text h2 { font-size: 1.2rem; }
+    .hero-image img { width: 250px; height: 250px; }
+    
+    .cta-group { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+    .btn { width: 100%; max-width: 300px; text-align: center; }
+    .btn-outline { margin-left: 0; }
+
+    section { padding: 50px 0; }
+    .card { padding: 30px 20px; }
+    .contact-info { flex-direction: column; gap: 15px; }
 }
 
 /* Add these to your existing style.css */
