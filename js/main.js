@@ -23,19 +23,30 @@ async function loadNav() {
         }
 
         // Mobile Menu Logic
-        const navContainer = document.querySelector('.nav-container');
         const navList = document.querySelector('nav ul');
+        // Use parentNode to be safe regardless of wrapper class (nav-container or nav-placeholder)
+        const navWrapper = navList ? navList.parentNode : null;
 
-        if (navContainer && navList) {
+        if (navWrapper && navList) {
             const mobileBtn = document.createElement('button');
             mobileBtn.className = 'mobile-menu-btn';
             mobileBtn.innerHTML = '☰';
             mobileBtn.setAttribute('aria-label', 'Toggle Menu');
-            navContainer.insertBefore(mobileBtn, navList);
+            
+            // Insert button before the list
+            navWrapper.insertBefore(mobileBtn, navList);
 
             mobileBtn.addEventListener('click', () => {
                 navList.classList.toggle('active');
                 mobileBtn.innerHTML = navList.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when a link is clicked
+            navList.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navList.classList.remove('active');
+                    mobileBtn.innerHTML = '☰';
+                });
             });
         }
     } catch (error) {
