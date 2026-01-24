@@ -21,6 +21,23 @@ async function loadNav() {
             const activeElement = document.getElementById(activeId);
             if (activeElement) activeElement.classList.add('active');
         }
+
+        // Mobile Menu Logic
+        const navContainer = document.querySelector('.nav-container');
+        const navList = document.querySelector('nav ul');
+
+        if (navContainer && navList) {
+            const mobileBtn = document.createElement('button');
+            mobileBtn.className = 'mobile-menu-btn';
+            mobileBtn.innerHTML = '☰';
+            mobileBtn.setAttribute('aria-label', 'Toggle Menu');
+            navContainer.insertBefore(mobileBtn, navList);
+
+            mobileBtn.addEventListener('click', () => {
+                navList.classList.toggle('active');
+                mobileBtn.innerHTML = navList.classList.contains('active') ? '✕' : '☰';
+            });
+        }
     } catch (error) {
         console.error('Error loading navigation:', error);
     }
