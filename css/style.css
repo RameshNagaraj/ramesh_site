@@ -179,16 +179,17 @@ footer { background: var(--primary); color: white; padding: 80px 0 40px; text-al
 /* Theme Toggle */
 #theme-toggle {
     position: fixed;
-    top: 25px;
-    right: 25px;
-    background: var(--light-green);
+    top: 20px;
+    right: 20px;
+    background: var(--light-green, #f2f8f3);
     border: 1px solid var(--border);
     color: var(--text);
     width: 40px;
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 2000;
+    z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
     justify-content: center;
