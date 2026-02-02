@@ -6,12 +6,13 @@ async function loadNav() {
         document.getElementById('nav-placeholder').innerHTML = navHtml;
 
         const path = window.location.pathname;
-        const page = path.split("/").pop() || "index.html";
+        const page = (path.split("/").pop() || "index.html").toLowerCase();
 
         const navMap = {
             "index.html": "nav-home",
             "experience.html": "nav-experience",
             "travel.html": "nav-travel",
+            "waterfalls.html": "nav-waterfalls",
             "photography.html": "nav-photography",
             "contact.html": "nav-contact"
         };

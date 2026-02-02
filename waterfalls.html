@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waterfalls | R@M3$H.N</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 8px solid white;
+            z-index: 1;
+        }
+        .map-overlay {
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+            background: white;
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            font-weight: 700;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div id="nav-placeholder"></div>
+    </nav>
+
+    <section class="travel-page">
+        <div class="container text-center">
+            <h1 class="section-title">Waterfalls Expeditions</h1>
+            <p class="hero-description" style="margin: 0 auto 40px auto;">
+                Chasing the world's most beautiful cascades. A journey through mist and thunder.
+            </p>
+            
+            <div id="map"></div>
+            <div class="map-overlay">6 Waterfalls Explored</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ramesh Nagaraj. Waterfall Enthusiast.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize map centered to show US
+        const map = L.map('map').setView([39.8283, -98.5795], 4);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        const waterfallIcon = L.divIcon({
+            className: 'custom-div-icon',
+            html: "<div style='background-color:#3498db; width:12px; height:12px; border-radius:50%; border:2px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.3);'></div>",
+            iconSize: [12, 12],
+            iconAnchor: [6, 6]
+        });
+
+        const waterfalls = [
+            { name: "Niagara Falls", coords: [43.0962, -79.0377] },
+            { name: "Burney Falls", coords: [41.0114, -121.6550] },
+            { name: "Yosemite Upper Falls", coords: [37.7550, -119.5973] },
+            { name: "Yosemite Lower Falls", coords: [37.7510, -119.5960] },
+            { name: "Jog Falls", coords: [14.2294, 74.8126] },
+            { name: "Kethanahalli Falls", coords: [12.9388, 75.7234] }
+        ];
+
+        waterfalls.forEach(fall => {
+            L.marker(fall.coords, { icon: waterfallIcon }).addTo(map).bindPopup(`<b>${fall.name}</b>`);
+        });
+    </script>
+    <script src="js/main.js?v=1"></script>
+    <script src="js/theme.js?v=1"></script>
+</body>
+</html>
