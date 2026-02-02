@@ -43,7 +43,7 @@
             </p>
             
             <div id="map"></div>
-            <div class="map-overlay">6 Waterfalls Explored</div>
+            <div class="map-overlay">6 Waterfalls Visited | 2 Continents</div>
         </div>
     </section>
 
@@ -56,7 +56,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         // Initialize map centered to show US
-        const map = L.map('map').setView([39.8283, -98.5795], 4);
+        const map = L.map('map');
 
         L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             maxZoom: 18,
@@ -79,9 +79,14 @@
             { name: "Kethanahalli Falls", coords: [12.9388, 75.7234] }
         ];
 
+        const markers = [];
         waterfalls.forEach(fall => {
-            L.marker(fall.coords, { icon: waterfallIcon }).addTo(map).bindPopup(`<b>${fall.name}</b>`);
+            const marker = L.marker(fall.coords, { icon: waterfallIcon }).addTo(map).bindPopup(`<b>${fall.name}</b>`);
+            markers.push(marker);
         });
+
+        const group = L.featureGroup(markers);
+        map.fitBounds(group.getBounds(), { padding: [50, 50] });
     </script>
     <script src="js/main.js?v=1"></script>
     <script src="js/theme.js?v=1"></script>
